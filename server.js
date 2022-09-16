@@ -1,11 +1,14 @@
+var cors    =  require('cors');
 var express = require('express');
 var multer  = require('multer');
-var fs  = require('fs');
-const path = require('path');
+var fs      = require('fs');
+const path  = require('path');
 
 const serveIndex = require('serve-index')
 
 var app = express();
+
+app.use(cors({ origin: true }));
 
 app.use('/uploads', express.static('uploads'), serveIndex('uploads', {'icons': true}));
 app.set('view engine', 'ejs');
